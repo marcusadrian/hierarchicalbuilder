@@ -18,8 +18,10 @@ public abstract class Pizza {
 
         abstract Pizza build();
 
-        // Subclasses must override this method to return "this"
-        protected abstract T self();
+        @SuppressWarnings("unchecked")
+        protected T self() {
+            return (T) this;
+        }
     }
     
     Pizza(Builder<?> builder) {
