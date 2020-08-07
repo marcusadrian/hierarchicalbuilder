@@ -8,25 +8,32 @@ public class NyPizza extends Pizza {
     private final Size size;
     private final boolean glutenfree;
 
-    public static class Builder extends Pizza.Builder<Builder> {
+    protected abstract static class AbstractBuilder<T extends NyPizza.AbstractBuilder<T>> extends Pizza.AbstractBuilder<T> {
         private final Size size;
         private boolean glutenfree = false; // Default
 
-        public Builder(Size size) {
+        public AbstractBuilder(Size size) {
             this.size = Objects.requireNonNull(size);
         }
 
-        public Builder glutenfree() {
+        public T glutenfree() {
             glutenfree = true;
-            return this;
+            return self();
+        }
+
+    }
+
+    public static class Builder extends AbstractBuilder<Builder> {
+        public Builder(Size size) {
+            super(size);
         }
 
         @Override public NyPizza build() {
             return new NyPizza(this);
         }
-    }
 
-    private NyPizza(Builder builder) {
+    }
+    protected NyPizza(AbstractBuilder<?> builder) {
         super(builder);
         size = builder.size;
         glutenfree = builder.glutenfree;

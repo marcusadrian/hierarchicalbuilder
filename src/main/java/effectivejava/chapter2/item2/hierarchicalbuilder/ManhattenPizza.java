@@ -1,27 +1,34 @@
 package effectivejava.chapter2.item2.hierarchicalbuilder;
 
-import java.util.Objects;
-
 public class ManhattenPizza extends NyPizza {
     private final boolean organic;
 
-    public static class Builder extends NyPizza.Builder<ManhattenPizza.Builder> {
+    protected abstract static class AbstractBuilder<T extends ManhattenPizza.AbstractBuilder<T>> extends NyPizza.AbstractBuilder<T> {
         private boolean organic = false; // Default
 
-        public Builder(Size size) {
+        public AbstractBuilder(Size size) {
             super(size);
         }
 
-        public NyPizza.Builder organic() {
+        public T organic() {
             organic = true;
-            return this;
+            return self();
         }
-        @Override public NyPizza build() {
-            return new ManhattenPizza(this);
-        }
+
     }
 
-    private ManhattenPizza(Builder builder) {
+    public static class Builder extends AbstractBuilder<Builder> {
+        public Builder(Size size) {
+            super(size);
+        }
+        @Override
+        public ManhattenPizza build() {
+            return new ManhattenPizza(this);
+        }
+
+    }
+
+    protected ManhattenPizza(AbstractBuilder<?> builder) {
         super(builder);
         organic = builder.organic;
     }

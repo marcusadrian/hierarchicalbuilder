@@ -6,17 +6,19 @@ import static effectivejava.chapter2.item2.hierarchicalbuilder.NyPizza.Size.*;
 // Using the hierarchical builder (Page 16)
 public class PizzaTest {
     public static void main(String[] args) {
-        NyPizza pizza = new NyPizza.Builder(SMALL)
+        NyPizza nyPizza = new NyPizza.Builder(SMALL)
                 .addTopping(SAUSAGE)
                 .addTopping(ONION)
                 .glutenfree()
                 .build();
-        Calzone calzone = new Calzone.Builder()
+
+        ManhattenPizza mhPizza = new ManhattenPizza.Builder(SMALL)
                 .addTopping(HAM)
-                .sauceInside()
+                .glutenfree()
+                .organic()
                 .build();
-        
-        System.out.println(pizza);
-        System.out.println(calzone);
+
+
+        System.out.println(nyPizza);
     }
 }
