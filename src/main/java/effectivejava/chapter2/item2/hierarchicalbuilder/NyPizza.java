@@ -8,7 +8,9 @@ public class NyPizza extends Pizza {
     private final Size size;
     private final boolean glutenfree;
 
-    protected abstract static class AbstractBuilder<T extends NyPizza.AbstractBuilder<T>> extends Pizza.AbstractBuilder<T> {
+    protected abstract static class AbstractBuilder<T extends NyPizza.AbstractBuilder<T>>
+            extends Pizza.AbstractBuilder<T> {
+
         private final Size size;
         private boolean glutenfree = false; // Default
 
@@ -40,6 +42,9 @@ public class NyPizza extends Pizza {
     }
 
     @Override public String toString() {
-        return "New York Pizza with " + toppings;
+        return size +
+                (glutenfree ? " glutenfree" : "") +
+                " New York Pizza with " +
+                toppings;
     }
 }

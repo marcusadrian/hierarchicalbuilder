@@ -3,7 +3,9 @@ package effectivejava.chapter2.item2.hierarchicalbuilder;
 public class ManhattenPizza extends NyPizza {
     private final boolean organic;
 
-    protected abstract static class AbstractBuilder<T extends ManhattenPizza.AbstractBuilder<T>> extends NyPizza.AbstractBuilder<T> {
+    protected abstract static class AbstractBuilder<T extends ManhattenPizza.AbstractBuilder<T>>
+            extends NyPizza.AbstractBuilder<T> {
+
         private boolean organic = false; // Default
 
         public AbstractBuilder(Size size) {
@@ -33,4 +35,8 @@ public class ManhattenPizza extends NyPizza {
         organic = builder.organic;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + (organic ? " (organic)" : "");
+    }
 }

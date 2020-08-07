@@ -12,13 +12,31 @@ public class PizzaTest {
                 .glutenfree()
                 .build();
 
-        ManhattenPizza mhPizza = new ManhattenPizza.Builder(SMALL)
+        System.out.println(nyPizza);
+
+        ManhattenPizza mhPizza = new ManhattenPizza.Builder(LARGE)
                 .addTopping(HAM)
                 .glutenfree()
                 .organic()
                 .build();
 
+        System.out.println(mhPizza);
 
-        System.out.println(nyPizza);
+        Calzone calzone = new Calzone.Builder()
+                .addTopping(MUSHROOM)
+                .sauceInside()
+                .build();
+
+        System.out.println(calzone);
+
+        SpicyCalzone spicyCalzone = new SpicyCalzone.Builder()
+                .addTopping(ONION)
+                .sauceInside()
+                .spiceDegree(3)
+                .build();
+
+        System.out.println(spicyCalzone);
+
+
     }
 }
