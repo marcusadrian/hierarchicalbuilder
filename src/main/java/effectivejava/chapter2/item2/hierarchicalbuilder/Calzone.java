@@ -21,7 +21,6 @@ public class Calzone extends Pizza {
         }
     }
 
-
     protected Calzone(AbstractBuilder<?> builder) {
         super(builder);
         sauceInside = builder.sauceInside;
@@ -29,7 +28,9 @@ public class Calzone extends Pizza {
 
     @Override
     public String toString() {
-        return String.format("Calzone with %s and sauce on the %s",
-                toppings, sauceInside ? "inside" : "outside");
+        return String.format("%s with %s and sauce on the %s",
+                this.getClass().getSimpleName(),
+                toppings,
+                sauceInside ? "inside" : "outside");
     }
 }

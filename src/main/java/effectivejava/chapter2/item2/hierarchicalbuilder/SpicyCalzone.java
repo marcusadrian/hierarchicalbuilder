@@ -9,10 +9,6 @@ public class SpicyCalzone extends Calzone {
 
         private int spiceDegree = 5; // Default
 
-        public AbstractBuilder() {
-            super();
-        }
-
         public T spiceDegree(int spiceDegree) {
             this.spiceDegree = spiceDegree;
             return self();

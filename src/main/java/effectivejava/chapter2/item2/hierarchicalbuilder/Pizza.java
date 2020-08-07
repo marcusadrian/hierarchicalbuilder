@@ -24,7 +24,7 @@ public abstract class Pizza {
         }
     }
     
-    Pizza(AbstractBuilder<?> builder) {
+    protected Pizza(AbstractBuilder<?> builder) {
         toppings = builder.toppings.clone(); // See Item 50
     }
 }

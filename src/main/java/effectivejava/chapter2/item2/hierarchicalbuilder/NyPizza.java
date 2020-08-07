@@ -44,7 +44,9 @@ public class NyPizza extends Pizza {
     @Override public String toString() {
         return size +
                 (glutenfree ? " glutenfree" : "") +
-                " New York Pizza with " +
+                " " +
+                this.getClass().getSimpleName() +
+                " with " +
                 toppings;
     }
 }
